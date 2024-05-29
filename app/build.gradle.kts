@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -33,9 +36,39 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    //navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //Json for retrofit
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+    //okhttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt ("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    //dagger hilt
+    val hilt_version = "2.48"
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
