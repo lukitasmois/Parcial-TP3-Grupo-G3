@@ -23,10 +23,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_bar"
-        android:layout_width="411dp"
-        android:layout_height="90dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_frag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
