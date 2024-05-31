@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragExplore">
 
+    <fragment
+        android:id="@+id/fragExplore"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragExplore"
+        android:label="lay_frag_explore"
+        tools:layout="@layout/lay_frag_explore" />
+    <fragment
+        android:id="@+id/fragSearch"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSearch"
+        android:label="lay_frag_search"
+        tools:layout="@layout/lay_frag_search" />
+    <fragment
+        android:id="@+id/fragOffers"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragOffers"
+        android:label="lay_frag_offers"
+        tools:layout="@layout/lay_frag_offers" />
+    <fragment
+        android:id="@+id/fragProfile"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragProfile"
+        android:label="lay_frag_profile"
+        tools:layout="@layout/lay_frag_profile" />
 </navigation>

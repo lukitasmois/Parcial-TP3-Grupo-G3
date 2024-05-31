@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragExplore"
+        android:icon="@drawable/explore_bottom"
+        android:title="@string/explore"/>
 
+    <item
+        android:id="@+id/fragSearch"
+        android:icon="@drawable/search_bottom"
+        android:title="@string/search"/>
+
+    <item
+        android:id="@+id/fragOffers"
+        android:icon="@drawable/offers_bottom"
+        android:title="@string/offers"/>
+
+    <item
+        android:id="@+id/fragProfile"
+        android:icon="@drawable/profile_bottom"
+        android:title="@string/profile"/>
 </menu>
