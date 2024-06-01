@@ -7,19 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.ImageButton
+import androidx.navigation.fragment.findNavController
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
-import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchsResultsBinding
+import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class FragSearchsResults : Fragment() {
-    private var _binding:LayFragSearchsResultsBinding? = null
+    private var _binding:LayFragSearchResultsBinding? = null
     private val binding get() = _binding!!
     private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
     private lateinit var tripAdapter: TripAdapter
-
+    private lateinit var btnGoBack : ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,7 @@ class FragSearchsResults : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = LayFragSearchsResultsBinding.inflate(inflater, container, false)
+        _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
         tripAdapter = TripAdapter(mutableListOf())
 
         searchsResultsViewModel.onCreate()
@@ -51,6 +54,14 @@ class FragSearchsResults : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        _binding?.imageButton?.setOnClickListener()
+        {
+            findNavController().navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragSearch())
+        }
+    }
 
 
-}
+    }

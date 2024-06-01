@@ -11,6 +11,15 @@
         android:label="lay_frag_explore"
         tools:layout="@layout/lay_frag_explore" />
     <fragment
+        android:id="@+id/fragSearch"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSearch"
+        android:label="lay_frag_search"
+        tools:layout="@layout/lay_frag_search" >
+        <action
+            android:id="@+id/action_fragSearch_to_fragSearchsResults"
+            app:destination="@id/fragSearchsResults" />
+    </fragment>
+    <fragment
         android:id="@+id/fragOffers"
         android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragOffers"
         android:label="lay_frag_offers"
@@ -22,17 +31,13 @@
         tools:layout="@layout/lay_frag_profile" />
 
     <fragment
-        android:id="@+id/fragSearch"
-        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSearch"
-        android:label="lay_frag_search"
-        tools:layout="@layout/lay_frag_search" >
-        <action
-            android:id="@+id/action_fragSearch_to_fragSearchsResults"
-            app:destination="@id/fragSearchsResults" />
-    </fragment>
-    <fragment
         android:id="@+id/fragSearchsResults"
         android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSearchsResults"
         android:label="lay_frag_searchs_results"
-        tools:layout="@layout/lay_frag_searchs_results" />
+        tools:layout="@layout/lay_frag_search_results" >
+        <action
+            android:id="@+id/action_fragSearchsResults_to_fragSearch"
+            app:destination="@id/fragSearch" />
+    </fragment>
+
 </navigation>
