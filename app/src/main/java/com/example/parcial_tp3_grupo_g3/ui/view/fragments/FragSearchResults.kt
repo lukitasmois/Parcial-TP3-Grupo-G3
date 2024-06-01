@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.navigation.fragment.findNavController
 import com.example.parcial_tp3_grupo_g3.R
 
 
-class FragSearchsResults : Fragment() {
+class FragSearchResults : Fragment() {
 
+    private lateinit var btnGoBack : ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,7 +23,15 @@ class FragSearchsResults : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lay_frag_searchs_results, container, false)
+        return inflater.inflate(R.layout.lay_frag_search_results, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        btnGoBack.setOnClickListener()
+        {
+            findNavController().navigate(R.id.action_fragSearchResults_to_fragSearch)
+        }
+    }
 }
