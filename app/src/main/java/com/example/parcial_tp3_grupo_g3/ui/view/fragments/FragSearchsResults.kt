@@ -5,10 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parcial_tp3_grupo_g3.R
+import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
+import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchsResultsBinding
+import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FragSearchsResults : Fragment() {
+    private var _binding:LayFragSearchsResultsBinding? = null
+    private val binding get() = _binding!!
+    private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
+    private lateinit var tripAdapter: TripAdapter
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +31,26 @@ class FragSearchsResults : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lay_frag_searchs_results, container, false)
+        _binding = LayFragSearchsResultsBinding.inflate(inflater, container, false)
+        tripAdapter = TripAdapter(mutableListOf())
+
+        searchsResultsViewModel.onCreate()
+
+        _binding!!.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = tripAdapter
+        }
+
+        searchsResultsViewModel.tripList.observe(viewLifecycleOwner) {
+            it?.let {
+                tripAdapter.updateList(it)
+            }
+        }
+
+
+        return binding.root
     }
+
+
 
 }
