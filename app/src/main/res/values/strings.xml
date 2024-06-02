@@ -2,4 +2,6 @@
     <string name="app_name">Parcial-TP3-Grupo-G3</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name ="text_special_offer">LIMITED OFFER</string>
+    <string name ="text_title_offer">Get discount with this card</string>
 </resources>
