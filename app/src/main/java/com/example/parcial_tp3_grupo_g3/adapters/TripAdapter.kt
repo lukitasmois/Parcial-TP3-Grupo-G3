@@ -19,6 +19,14 @@ class TripAdapter(
         override fun onBindViewHolder(holder: TripHolder, position: Int) {
             val trip = tripList[position]
             holder.setTripPrice(trip.price)
+            holder.setNameAirline(trip.flights[0].airlineName)
+            holder.setLogoAirline(trip.flights[0].airlineLogo)
+            holder.setTime(trip.totalDuration)
+            holder.setAirportID(trip.flights[0].departure_airport.id)
+            holder.setAirportID2(trip.flights[0].arrival_airport.id)
+            holder.setAirportName(trip.flights[0].departure_airport.name)
+            holder.setAirportName2(trip.flights[0].arrival_airport.name)
+            holder.setClass(trip.flights[0].travelClass)
         }
 
         override fun getItemCount() = tripList.size

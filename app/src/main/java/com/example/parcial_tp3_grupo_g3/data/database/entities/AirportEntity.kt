@@ -14,8 +14,8 @@ data class AirportEntity(
 
 fun AirportEntity.toDomainModel(): Airport {
     return Airport(
-        name = this.name,
-        id = this.id,
-        time = this.time
+        name = name,
+        id = id,
+        time = time
     )
 }

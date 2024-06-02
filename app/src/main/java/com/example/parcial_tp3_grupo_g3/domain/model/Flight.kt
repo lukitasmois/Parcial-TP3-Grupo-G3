@@ -8,7 +8,7 @@ data class Flight(
     val arrival_airport : Airport,
     val airlineName: String,
     val airlineLogo: String,
-    val travelClass: String,
+    val travelClass: String
 )
 
 

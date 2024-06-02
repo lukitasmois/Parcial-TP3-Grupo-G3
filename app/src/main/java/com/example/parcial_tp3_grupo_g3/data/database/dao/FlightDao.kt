@@ -12,7 +12,7 @@ interface FlightDao {
     suspend fun insertFlight(flight: FlightEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllFlights(flights: List<FlightEntity>)
+    suspend fun insertAllFlights(flights: List<FlightEntity>): List<Long> // Cambiar el tipo de retorno
 
     @Query("SELECT * FROM flight WHERE tripID = :tripID")
     suspend fun getFlightsByTripId(tripID: Long): List<FlightEntity>

@@ -6,12 +6,13 @@
     </style>
 
     <style name="font" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="color">@color/gray</item>
+        <item name="color">#00F3F5F9</item>
     </style>
 
     <style name="button" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="cornerRadius">5dp</item>
         <item name="fontFamily">@font/inter_semibold</item>
+        <item name="backgroundTint">@color/yellow</item>
     </style>
 
 

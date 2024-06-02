@@ -1,5 +1,6 @@
 package com.example.parcial_tp3_grupo_g3.data
 
+import android.util.Log
 import com.example.parcial_tp3_grupo_g3.data.database.dao.AirportDao
 import com.example.parcial_tp3_grupo_g3.data.database.dao.FlightDao
 import com.example.parcial_tp3_grupo_g3.data.database.dao.TripDao
@@ -25,24 +26,21 @@ class TripRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
-    suspend fun getAllTripsFromDatabase(): List<TripEntity> {
-        return tripDao.getAllTrips()
-    }
-
-    suspend fun insertTripWithFlights(trip: TripEntity, flights: List<FlightEntity>, airports: List<AirportEntity>) {
-        val tripId = tripDao.insertTrip(trip)
-        flights.forEach { flight ->
-            flight.flightID = tripId.toInt().toLong()
-            flightDao.insertFlight(flight)
-        }
-        airports.forEach { airport ->
-            airportDao.insertAirport(airport)
+    suspend fun getAllTripsFromDatabase(): List<Trip> {
+        val trips = tripDao.getAllTrips()
+        val allAirports = getAllAirports()
+        return trips.map { trip ->
+            val flights = getFlightsForTrip(trip.tripID)
+            trip.toDomainModel(flights, allAirports)
         }
     }
 
-//    suspend fun clearTrips() {
-//        tripDao.deleteTrip()
-//    }
+    suspend fun getFlightsForTrip(tripId: Long): List<FlightEntity> {
+        val flightEntities = flightDao.getFlightsByTripId(tripId)
+        return flightEntities
+    }
 
-
+    suspend fun getAllAirports(): Map<String, AirportEntity> {
+        return airportDao.getAllAirports().associateBy { it.id }
+    }
 }

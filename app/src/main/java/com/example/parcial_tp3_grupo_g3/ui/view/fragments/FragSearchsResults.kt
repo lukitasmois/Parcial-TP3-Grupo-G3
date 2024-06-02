@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.ImageButton
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
@@ -22,7 +23,6 @@ class FragSearchsResults : Fragment() {
     private val binding get() = _binding!!
     private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
     private lateinit var tripAdapter: TripAdapter
-    private lateinit var btnGoBack : ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +36,10 @@ class FragSearchsResults : Fragment() {
     ): View? {
         _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
         tripAdapter = TripAdapter(mutableListOf())
-
+        binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
         searchsResultsViewModel.onCreate()
 
-        _binding!!.recyclerView.apply {
+        binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = tripAdapter
         }
@@ -49,6 +49,12 @@ class FragSearchsResults : Fragment() {
                 tripAdapter.updateList(it)
             }
         }
+
+        searchsResultsViewModel.isLoading.observe(viewLifecycleOwner) {
+            binding.loading.isVisible = it
+        }
+
+
 
 
         return binding.root

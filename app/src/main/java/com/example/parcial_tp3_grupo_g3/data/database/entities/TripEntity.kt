@@ -7,13 +7,16 @@ import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 @Entity(tableName = "trips_table")
 data class TripEntity(
     @PrimaryKey(autoGenerate = true)
-    val tripID: Long = 0,
+    var tripID: Long = 0,
     val totalDuration: Int,
     val price: Double
 )
-fun TripEntity.toDomainModel(flights: List<FlightEntity>, airports: Map<String, AirportEntity>): Trip {
-    val domainFlights = flights.map { it.toDomainModel(airports) }
+suspend fun TripEntity.toDomainModel(flights: List<FlightEntity>, airports: Map<String, AirportEntity>): Trip {
+    val domainFlights = flights.map { flight ->
+        flight.toDomainModel(airports)
+    }
     return Trip(
+        tripID = tripID,
         totalDuration = totalDuration,
         price = price,
         flights = domainFlights
