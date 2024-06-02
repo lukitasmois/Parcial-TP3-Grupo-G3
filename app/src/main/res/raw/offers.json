@@ -1,0 +1,13 @@
+{
+  "offers": [{
+     "offer1": {
+          "name": "mastercard",
+          "discount": 20
+     },
+    "offer2": {
+          "name": "VISA",
+          "discount": 25
+    }
+  }
+  ]
+}

@@ -75,6 +75,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
