@@ -6,4 +6,11 @@
     <string name="search">Search</string>
     <string name="offers">Offers</string>
     <string name="profile">Profile</string>
+    <string name="location">Borocay</string>
+    <string name="location_country">Philipines</string>
+    <string name="amount">$349</string>
+    <string name="overview">Overview\n</string>
+    <string name="summary">Spend 5 days and 4 nights in one of the best islands in the world! Bask in the sun while walking in the white sand beach and enjoy the night partying at the popular seaside bars.</string>
+    <string name="photos">Photos</string>
+    <string name="booking">Book Now</string>
 </resources>

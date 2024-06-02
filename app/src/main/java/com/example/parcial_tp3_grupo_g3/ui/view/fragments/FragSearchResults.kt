@@ -13,6 +13,7 @@ import com.example.parcial_tp3_grupo_g3.R
 class FragSearchResults : Fragment() {
 
     private lateinit var btnGoBack : ImageButton
+    private lateinit var view1 : View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +24,10 @@ class FragSearchResults : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lay_frag_search_results, container, false)
+
+        view1 = inflater.inflate(R.layout.lay_frag_search_results, container, false)
+        btnGoBack = view1.findViewById(R.id.searchResultsGoBackButton)
+        return view1
     }
 
     override fun onStart() {
