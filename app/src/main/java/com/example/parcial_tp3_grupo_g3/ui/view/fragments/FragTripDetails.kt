@@ -5,16 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.example.parcial_tp3_grupo_g3.R
-import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragTripDetailsBinding
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
-import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.TripDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
