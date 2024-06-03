@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintOffer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteX="11dp"
+    tools:layout_editor_absoluteY="172dp">
 
     <TextView
         android:id="@+id/textLimited"
@@ -17,16 +19,38 @@
         android:text="@string/text_special_offer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/lay_offer_text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
         android:text="@string/text_title_offer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textLimited" />
+
+    <TextView
+        android:id="@+id/lay_offer_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="36dp"
+        android:text="aca va el texto del cuerpo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_offer_text_title" />
+
+    <ImageView
+        android:id="@+id/lay_card_Image"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_offer_text_title"
+        app:srcCompat="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

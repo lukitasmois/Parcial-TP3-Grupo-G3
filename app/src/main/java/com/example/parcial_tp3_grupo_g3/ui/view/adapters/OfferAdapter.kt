@@ -19,9 +19,12 @@ class OfferAdapter(val offers: MutableList<Offer>?) : RecyclerView.Adapter<Offer
     }
 
     override fun onBindViewHolder(holder: OfferHolder, position: Int) {
+
         val offer = offers?.get(position)
         if (offer != null) {
-            holder.setTitle(offer.nombreTarjeta)
+            holder.setTitle(offer.titletext)
+            holder.setBody(offer.bodytext)
+            holder.itemView.context.getDrawable(offer.cardImg)?.let { holder.setImage(it) }
         }
     }
 }

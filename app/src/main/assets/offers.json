@@ -1,0 +1,16 @@
+[
+  {
+    "name": "mastercard",
+    "discount":20,
+    "titletext": "get 20% discount with your master credit cards",
+    "bodytext": "use your mastercard with any \n transaction and get 20% discount instantly",
+    "cardImg": "2131165419"
+  },
+  {
+    "name": "VISA",
+    "discount":25,
+    "titletext": "get 25% discount with your VISA credit or debit cards",
+    "bodytext": "use your VISA credit or debit card with any \n transaction and get 25% discount instantly",
+    "cardImg": "2131165420"
+  }
+]

@@ -6,4 +6,6 @@
     <string name="search">Search</string>
     <string name="offers">Offers</string>
     <string name="profile">Profile</string>
+    <string name="text_title_offer">aca va el texto del titulo</string>
+    <string name="text_special_offer">SPECIAL OFFER!</string>
 </resources>

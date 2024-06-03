@@ -1,6 +1,7 @@
 package com.example.parcial_tp3_grupo_g3.ui.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,7 @@ class FragOffers : Fragment() {
     override fun onStart() {
         super.onStart()
         offerRecycler.setHasFixedSize(true)
+        Log.d("image int",R.drawable.visa.toString())
         val offers = getOffers()
         manager = LinearLayoutManager(context)
         offerAdapter = OfferAdapter(offers)
@@ -59,8 +61,10 @@ class FragOffers : Fragment() {
 
     fun getOffers(): MutableList<Offer>? {
         val data:MutableList<Offer>
-        val json = context?.assets?.open("res/raw/offers.json")?.bufferedReader().use { it?.readText()}
+
+        val json = context?.assets?.open("offers.json")?.bufferedReader().use { it?.readText()}
         data = json?.let { Json.decodeFromString<MutableList<Offer>>(it) }!!
+        Log.d("json",data.toString())
         return data
     }
 
