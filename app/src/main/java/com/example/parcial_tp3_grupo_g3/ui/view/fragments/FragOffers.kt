@@ -47,7 +47,6 @@ class FragOffers : Fragment() {
     override fun onStart() {
         super.onStart()
         offerRecycler.setHasFixedSize(true)
-        Log.d("image int",R.drawable.visa.toString())
         val offers = getOffers()
         manager = LinearLayoutManager(context)
         offerAdapter = OfferAdapter(offers)

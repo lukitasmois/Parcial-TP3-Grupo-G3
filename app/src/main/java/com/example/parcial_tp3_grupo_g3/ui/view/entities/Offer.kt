@@ -8,5 +8,5 @@ data class Offer (
     val discount:Int,
     val titletext:String,
     val bodytext:String,
-    val cardImg:Int
+    val cardImg:String
 )

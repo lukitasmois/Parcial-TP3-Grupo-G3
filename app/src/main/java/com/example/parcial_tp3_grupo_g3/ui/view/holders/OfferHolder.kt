@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.parcial_tp3_grupo_g3.R
 
 class OfferHolder (v: View): RecyclerView.ViewHolder(v) {
@@ -24,9 +25,9 @@ class OfferHolder (v: View): RecyclerView.ViewHolder(v) {
         body.text = bodytext
     }
 
-    fun setImage(drawable: Drawable){
-        val image : ImageView = view.findViewById((R.id.lay_card_Image))
-        image.setImageDrawable(drawable)
+    fun setImage(image: String){
+        val Itemimage : ImageView = view.findViewById((R.id.lay_card_Image))
+        Glide.with(view.context).load(image).centerCrop().into(Itemimage)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.parcial_tp3_grupo_g3.ui.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@ class OfferAdapter(val offers: MutableList<Offer>?) : RecyclerView.Adapter<Offer
         if (offer != null) {
             holder.setTitle(offer.titletext)
             holder.setBody(offer.bodytext)
-            holder.itemView.context.getDrawable(offer.cardImg)?.let { holder.setImage(it) }
+            holder.setImage(offer.cardImg)
         }
     }
 }
