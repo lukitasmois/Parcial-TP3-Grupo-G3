@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.appcompat.widget.Toolbar>
-        
+
     <View
         android:id="@id/viewSupporter"
         android:layout_width="1dp"
@@ -120,7 +120,7 @@
         </HorizontalScrollView>
 
         <Button
-            android:id="@+id/book"
+            android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"

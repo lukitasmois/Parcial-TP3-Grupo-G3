@@ -13,4 +13,19 @@
     <string name="summary">Spend 5 days and 4 nights in one of the best islands in the world! Bask in the sun while walking in the white sand beach and enjoy the night partying at the popular seaside bars.</string>
     <string name="photos">Photos</string>
     <string name="booking">Book Now</string>
+    <string name="lay_search_button_search">Search</string>
+    <string name="lay_search_select_departure">Select Departure</string>
+    <string name="lay_search_select_arrival">Select Arrival</string>
+    <string name="item_trip_button_view_details">View Details</string>
+    <string name="from">From</string>
+    <string name="cash_letters">$$$$</string>
+    <string name="item_trip_class">Class</string>
+    <string name="item_trip_hour_minutes">00 hr 00min</string>
+    <string name="item_trip_name_airline">Name Airline</string>
+    <string name="item_trip_airport_name">Airport</string>
+    <string name="item_trip_airport2_name">Airport2</string>
+    <string name="item_trip_airport2id">ID2</string>
+    <string name="divisor_line_desc">divisor line</string>
+    <string name="class_image_desc">class image</string>
+    <string name="item_trip_airportid">ID</string>
 </resources>

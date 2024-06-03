@@ -9,6 +9,7 @@ import com.example.parcial_tp3_grupo_g3.R
 
 
 class FragSettings : Fragment() {
+    lateinit var view1: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +19,9 @@ class FragSettings : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lay_frag_settings, container, false)
+        view1= inflater.inflate(R.layout.lay_frag_explore, container, false)
+        view1.setBackgroundColor(resources.getColor(R.color.background_color))
+        return view1
     }
 
 }

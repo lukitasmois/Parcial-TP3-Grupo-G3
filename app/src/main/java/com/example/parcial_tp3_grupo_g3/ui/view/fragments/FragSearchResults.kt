@@ -5,15 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.parcial_tp3_grupo_g3.R
+import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
+import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
+import com.example.parcial_tp3_grupo_g3.domain.model.Trip
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
+import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
-class FragSearchResults : Fragment() {
+@AndroidEntryPoint
+class FragSearchResults : Fragment(), ItemClickListener {
+    private var _binding:LayFragSearchResultsBinding? = null
+    private val binding get() = _binding!!
+    private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
+    private lateinit var tripAdapter: TripAdapter
 
-    private lateinit var btnGoBack : ImageButton
-    private lateinit var view1 : View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,19 +35,51 @@ class FragSearchResults : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
+        tripAdapter = TripAdapter(mutableListOf(), searchsResultsViewModel)
+        binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
+        searchsResultsViewModel.onCreate()
 
-        view1 = inflater.inflate(R.layout.lay_frag_search_results, container, false)
-        btnGoBack = view1.findViewById(R.id.searchResultsGoBackButton)
-        return view1
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = tripAdapter
+        }
+        searchsResultsViewModel.tripList.observe(viewLifecycleOwner) {
+            it?.let {
+                tripAdapter.updateList(it)
+            }
+        }
+
+        searchsResultsViewModel.isLoading.observe(viewLifecycleOwner) {
+            binding.loading.isVisible = it
+        }
+
+        searchsResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
+            trip?.let {
+                println("click")
+                findNavController().navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragTripDetails(trip))
+                // Reinicia el valor después de la navegación para evitar navegaciones repetidas
+                searchsResultsViewModel.navigateToTripDetails.value = null
+            }
+        }
+
+        return binding.root
     }
 
     override fun onStart() {
         super.onStart()
 
-        btnGoBack.setOnClickListener()
+        _binding.btnGoBack.setOnClickListener()
         {
             findNavController().navigate(R.id.action_fragSearchResults_to_fragSearch)
         }
+    }
+
+    override fun saveTrip(trip: Trip) {
+        view?.findNavController()?.navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragSearch())
+    }
+
+    override fun navigateToTripDetails(trip: Trip) {
+        TODO("Not yet implemented")
     }
 }

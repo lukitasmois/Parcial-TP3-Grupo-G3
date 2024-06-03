@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textInputLayoutStyle" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="font" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="color">#00F3F5F9</item>
+    </style>
+
+    <style name="button" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="cornerRadius">5dp</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="backgroundTint">@color/yellow</item>
+    </style>
+
+
+</resources>
