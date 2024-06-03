@@ -6,20 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.UiContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.ui.view.adapters.OfferAdapter
 import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
-import com.example.parcial_tp3_grupo_g3.ui.view.entities.OfferList
-import com.example.parcial_tp3_grupo_g3.ui.view.holders.OfferHolder
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.io.StringReader
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
