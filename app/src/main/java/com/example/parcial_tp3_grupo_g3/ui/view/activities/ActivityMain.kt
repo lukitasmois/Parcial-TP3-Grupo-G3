@@ -8,7 +8,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.parcial_tp3_grupo_g3.R
 
 class ActivityMain : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.lay_activity_main)
@@ -17,5 +18,7 @@ class ActivityMain : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
     }
 }
