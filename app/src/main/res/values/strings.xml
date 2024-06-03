@@ -28,4 +28,6 @@
     <string name="divisor_line_desc">divisor line</string>
     <string name="class_image_desc">class image</string>
     <string name="item_trip_airportid">ID</string>
+    <string name="text_title_offer">aca va el texto del titulo</string>
+    <string name="text_special_offer">SPECIAL OFFER!</string>
 </resources>
