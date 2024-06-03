@@ -9,16 +9,19 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.ImageButton
 import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
+import com.example.parcial_tp3_grupo_g3.domain.model.Trip
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class FragSearchsResults : Fragment() {
+class FragSearchsResults : Fragment(), ItemClickListener {
     private var _binding:LayFragSearchResultsBinding? = null
     private val binding get() = _binding!!
     private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
@@ -35,7 +38,7 @@ class FragSearchsResults : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
-        tripAdapter = TripAdapter(mutableListOf())
+        tripAdapter = TripAdapter(mutableListOf(), searchsResultsViewModel)
         binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
         searchsResultsViewModel.onCreate()
 
@@ -54,6 +57,15 @@ class FragSearchsResults : Fragment() {
             binding.loading.isVisible = it
         }
 
+        searchsResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
+            trip?.let {
+                println("click")
+                findNavController().navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragTripDetails(trip))
+                // Reinicia el valor después de la navegación para evitar navegaciones repetidas
+                searchsResultsViewModel.navigateToTripDetails.value = null
+            }
+        }
+
 
 
 
@@ -63,11 +75,15 @@ class FragSearchsResults : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        _binding?.imageButton?.setOnClickListener()
-        {
-            findNavController().navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragSearch())
-        }
+    }
+
+    override fun saveTrip(trip: Trip) {
+        view?.findNavController()?.navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragSearch())
+    }
+
+    override fun navigateToTripDetails(trip: Trip) {
+        TODO("Not yet implemented")
     }
 
 
-    }
+}

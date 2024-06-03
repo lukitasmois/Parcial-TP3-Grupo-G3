@@ -7,35 +7,41 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.domain.GetTripsUseCase
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchResultsViewModel@Inject constructor(
+class SearchResultsViewModel @Inject constructor(
     private val getTripsUseCase : GetTripsUseCase,
 
-    ) : ViewModel(){
+    ) : ViewModel(), ItemClickListener {
 
         val isLoading = MutableLiveData<Boolean>()
         val tripList = MutableLiveData<MutableList<Trip>>()
+        val navigateToTripDetails = MutableLiveData<Trip?>()
 
         fun onCreate(){
             viewModelScope.launch {
                 isLoading.postValue(true)
                 val result = getTripsUseCase.invoke()
 
-                for (trip in result){
-                    Log.d("vuelos de trip $trip", trip.flights.size.toString())
-                }
 
                 if(!result.isNullOrEmpty()){
                     tripList.postValue(result.toMutableList())
-
                 }
                 isLoading.postValue(false)
 
             }
         }
+
+        override fun navigateToTripDetails(trip: Trip) {
+            navigateToTripDetails.value = trip
+        }
+
+    override fun saveTrip(trip: Trip) {
+
+    }
 
 }

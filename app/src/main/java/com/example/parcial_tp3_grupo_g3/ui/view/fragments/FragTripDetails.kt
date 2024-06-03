@@ -6,17 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragTripDetailsBinding
+import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.TripDetailsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class FragTripDetails : Fragment() {
     private var _binding: LayFragTripDetailsBinding? = null
     private val binding get() = _binding!!
-    private val tripDetailsViewModel : TripDetailsViewModel by viewModels()
+    private var trip : Trip? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +32,31 @@ class FragTripDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val tripDetailsViewModel = ViewModelProvider(this).get(TripDetailsViewModel::class.java)
         _binding = LayFragTripDetailsBinding.inflate(inflater, container, false)
+        val root: View = binding.root
         binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
 
 
+        arguments?.let {
+            val tripArg = FragTripDetailsArgs.fromBundle(it).trip
+            trip = tripArg
+            binding.textView.text = tripArg.price.toString()
+        }
 
-        return binding.root
+        _binding!!.button.setOnClickListener {
+            tripDetailsViewModel.saveTrip(trip!!)
+        }
+
+
+
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

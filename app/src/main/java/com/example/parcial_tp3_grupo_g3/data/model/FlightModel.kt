@@ -6,8 +6,8 @@ import com.example.parcial_tp3_grupo_g3.domain.model.Airport
 import com.google.gson.annotations.SerializedName
 
 data class Flight(
-    val departure_airport : Airport,
-    val arrival_airport : Airport,
+    val departure_airport : AirportModel,
+    val arrival_airport : AirportModel,
     @SerializedName("airline") val airlineName: String,
     @SerializedName("airline_logo") val airlineLogo: String,
     @SerializedName("travel_class") val travelClass: String,

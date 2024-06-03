@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.parcial_tp3_grupo_g3.domain.model.Airport
 
-@Entity
+@Entity(tableName = "airport")
 data class AirportEntity(
     @PrimaryKey
     val id: String,

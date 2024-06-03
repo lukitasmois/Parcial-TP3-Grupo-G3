@@ -6,12 +6,16 @@ import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 
 @Entity(tableName = "trips_table")
 data class TripEntity(
-    @PrimaryKey(autoGenerate = true)
-    var tripID: Long = 0,
+    @PrimaryKey var tripID: String,
     val totalDuration: Int,
-    val price: Double
+    val price: Double,
+    val departureToken: String,
+    val type: String,
+    val isSaved: Boolean
 )
-suspend fun TripEntity.toDomainModel(flights: List<FlightEntity>, airports: Map<String, AirportEntity>): Trip {
+
+
+ fun TripEntity.toDomainModel(flights: List<FlightEntity>, airports: Map<String, AirportEntity>): Trip {
     val domainFlights = flights.map { flight ->
         flight.toDomainModel(airports)
     }
@@ -19,7 +23,10 @@ suspend fun TripEntity.toDomainModel(flights: List<FlightEntity>, airports: Map<
         tripID = tripID,
         totalDuration = totalDuration,
         price = price,
-        flights = domainFlights
+        flights = domainFlights,
+        departureToken = departureToken,
+        type = type,
+        isSaved = isSaved
     )
 }
 

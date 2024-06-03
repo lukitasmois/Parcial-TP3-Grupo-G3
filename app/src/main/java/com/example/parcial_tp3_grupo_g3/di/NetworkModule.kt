@@ -40,7 +40,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideQuoteApiClient(retrofit: Retrofit): TripApiClient {
+    fun provideTripApiClient(retrofit: Retrofit): TripApiClient {
         return retrofit.create(TripApiClient::class.java)
     }
 }

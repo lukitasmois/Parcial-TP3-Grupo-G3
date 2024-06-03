@@ -12,15 +12,9 @@ interface AirportDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAirport(airport: AirportEntity): Long
 
-    @Query("SELECT * FROM AirportEntity")
+    @Query("SELECT * FROM airport")
     suspend fun getAllAirports(): List<AirportEntity>
 
-    @Query("SELECT * FROM AirportEntity WHERE id IN (:ids)")
-    suspend fun getAirportsByIds(ids: List<String>): List<AirportEntity>
-
-    @Query("SELECT * FROM AirportEntity WHERE id = :airportId")
+    @Query("SELECT * FROM airport WHERE id = :airportId")
     suspend fun getAirportById(airportId: String): AirportEntity
-
-
-
 }

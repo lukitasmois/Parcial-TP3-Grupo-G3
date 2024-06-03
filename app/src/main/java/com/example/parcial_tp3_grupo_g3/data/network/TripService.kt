@@ -25,7 +25,9 @@ class TripService @Inject constructor(
                     TripModel(
                     flights = trip.flights,
                         totalDuration = trip.totalDuration,
-                        price = trip.price
+                        price = trip.price,
+                        departureToken = trip.departureToken,
+                        type = trip.type
                 ) } ?: emptyList()
             } else {
                 emptyList()
