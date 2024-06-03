@@ -52,8 +52,12 @@ class FragTripDetails : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onStart() {
+        super.onStart()
+
+        binding.detailsGoBackButton.setOnClickListener()
+        {
+            findNavController().navigate(R.id.action_fragTripDetails_to_fragSearchResults)
+        }
     }
 }

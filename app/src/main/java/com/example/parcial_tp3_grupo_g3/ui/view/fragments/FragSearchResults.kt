@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FragSearchResults : Fragment(), ItemClickListener {
     private var _binding:LayFragSearchResultsBinding? = null
     private val binding get() = _binding!!
-    private val searchsResultsViewModel : SearchResultsViewModel by viewModels()
+    private val searchResultsViewModel : SearchResultsViewModel by viewModels()
     private lateinit var tripAdapter: TripAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,30 +36,30 @@ class FragSearchResults : Fragment(), ItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
-        tripAdapter = TripAdapter(mutableListOf(), searchsResultsViewModel)
+        tripAdapter = TripAdapter(mutableListOf(), searchResultsViewModel)
         binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
-        searchsResultsViewModel.onCreate()
+        searchResultsViewModel.onCreate()
 
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = tripAdapter
         }
-        searchsResultsViewModel.tripList.observe(viewLifecycleOwner) {
+        searchResultsViewModel.tripList.observe(viewLifecycleOwner) {
             it?.let {
                 tripAdapter.updateList(it)
             }
         }
 
-        searchsResultsViewModel.isLoading.observe(viewLifecycleOwner) {
+        searchResultsViewModel.isLoading.observe(viewLifecycleOwner) {
             binding.loading.isVisible = it
         }
 
-        searchsResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
+        searchResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
             trip?.let {
                 println("click")
-                findNavController().navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragTripDetails(trip))
+                findNavController().navigate(FragSearchResultsDirections.actionFragSearchResultsToFragTripDetails(trip))
                 // Reinicia el valor después de la navegación para evitar navegaciones repetidas
-                searchsResultsViewModel.navigateToTripDetails.value = null
+                searchResultsViewModel.navigateToTripDetails.value = null
             }
         }
 
@@ -69,14 +69,14 @@ class FragSearchResults : Fragment(), ItemClickListener {
     override fun onStart() {
         super.onStart()
 
-        _binding.btnGoBack.setOnClickListener()
+        binding.searchResultsGoBackButton.setOnClickListener()
         {
             findNavController().navigate(R.id.action_fragSearchResults_to_fragSearch)
         }
     }
 
     override fun saveTrip(trip: Trip) {
-        view?.findNavController()?.navigate(FragSearchsResultsDirections.actionFragSearchsResultsToFragSearch())
+        view?.findNavController()?.navigate(FragSearchResultsDirections.actionFragSearchResultsToFragSearch())
     }
 
     override fun navigateToTripDetails(trip: Trip) {
