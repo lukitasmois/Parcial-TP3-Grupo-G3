@@ -3,9 +3,8 @@ package com.example.parcial_tp3_grupo_g3.ui.view.activities
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.parcial_tp3_grupo_g3.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.parcial_tp3_grupo_g3.databinding.LayActivityMainBinding
