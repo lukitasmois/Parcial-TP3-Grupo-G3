@@ -11,6 +11,7 @@ data class TripEntity(
     val price: Double,
     val departureToken: String,
     val type: String,
+    val image: String,
     val isSaved: Boolean
 )
 
@@ -26,6 +27,7 @@ data class TripEntity(
         flights = domainFlights,
         departureToken = departureToken,
         type = type,
+        image = image,
         isSaved = isSaved
     )
 }

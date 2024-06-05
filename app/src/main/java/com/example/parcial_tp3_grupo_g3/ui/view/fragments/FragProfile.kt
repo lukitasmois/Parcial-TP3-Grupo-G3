@@ -20,7 +20,7 @@ class FragProfile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        view1= inflater.inflate(R.layout.lay_frag_explore, container, false)
+        view1= inflater.inflate(R.layout.lay_frag_profile, container, false)
         view1.setBackgroundColor(resources.getColor(R.color.background_color))
         return view1
     }

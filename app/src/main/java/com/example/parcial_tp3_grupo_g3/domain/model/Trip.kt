@@ -11,6 +11,7 @@ data class Trip(
     val tripID: String,
     val departureToken: String,
     val type: String,
+    val image : String,
     val isSaved: Boolean = false,
 ): Parcelable {
     constructor(parcel: Parcel) : this(
@@ -20,6 +21,7 @@ data class Trip(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
+        parcel.readString().toString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -28,6 +30,7 @@ data class Trip(
         parcel.writeDouble(price)
         parcel.writeString(tripID)
         parcel.writeString(departureToken)
+        parcel.writeString(image)
     }
 
     override fun describeContents(): Int {

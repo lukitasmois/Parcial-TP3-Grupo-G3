@@ -30,4 +30,5 @@
     <string name="item_trip_airportid">ID</string>
     <string name="text_title_offer">aca va el texto del titulo</string>
     <string name="text_special_offer">SPECIAL OFFER!</string>
+    <string name="from_mayus">FROM</string>
 </resources>

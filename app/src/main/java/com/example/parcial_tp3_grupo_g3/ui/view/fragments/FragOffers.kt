@@ -11,16 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.ui.view.adapters.OfferAdapter
 import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
-
+@AndroidEntryPoint
 class FragOffers : Fragment() {
 
     lateinit var offerRecycler:RecyclerView
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var viewOffer:View
     lateinit var offerAdapter: OfferAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
