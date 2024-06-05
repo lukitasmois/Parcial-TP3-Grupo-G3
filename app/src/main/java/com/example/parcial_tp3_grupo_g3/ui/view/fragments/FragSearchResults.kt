@@ -56,7 +56,6 @@ class FragSearchResults : Fragment(), ItemClickListener {
 
         searchResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
             trip?.let {
-                println("click")
                 findNavController().navigate(FragSearchResultsDirections.actionFragSearchResultsToFragTripDetails(trip))
                 // Reinicia el valor después de la navegación para evitar navegaciones repetidas
                 searchResultsViewModel.navigateToTripDetails.value = null

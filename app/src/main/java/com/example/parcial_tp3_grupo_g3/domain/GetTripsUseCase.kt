@@ -42,6 +42,13 @@ class GetTripsUseCase @Inject constructor(
         }
     }
 
+    suspend fun getTripById(tripId: String): Trip? {
+        val tripEntity = tripDao.getTripById(tripId) ?: return null
+        val flights = repository.getFlightsForTrip(tripEntity.tripID)
+        val allAirports = repository.getAllAirports()
+        return tripEntity.toDomainModel(flights, allAirports)
+    }
+
     private suspend fun insertTrips(trips: List<TripModel>): List<TripEntity> {
         val insertedTripEntities = mutableListOf<TripEntity>()
         trips.forEach { trip ->
