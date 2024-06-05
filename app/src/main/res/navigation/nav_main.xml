@@ -28,7 +28,11 @@
         android:id="@+id/fragProfile"
         android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragProfile"
         android:label="lay_frag_profile"
-        tools:layout="@layout/lay_frag_profile" />
+        tools:layout="@layout/lay_frag_profile" >
+        <action
+            android:id="@+id/action_fragProfile_to_fragSettings3"
+            app:destination="@id/fragSettings" />
+    </fragment>
     <fragment
         android:id="@+id/fragSearchResults"
         android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSearchResults"
@@ -52,4 +56,9 @@
             android:id="@+id/action_fragTripDetails_to_fragSearchResults"
             app:destination="@id/fragSearchResults" />
     </fragment>
+    <fragment
+        android:id="@+id/fragSettings"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSettings"
+        android:label="lay_frag_settings"
+        tools:layout="@layout/lay_frag_settings" />
 </navigation>

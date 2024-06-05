@@ -3,11 +3,13 @@ package com.example.parcial_tp3_grupo_g3.ui.view.activities
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 import com.example.parcial_tp3_grupo_g3.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.parcial_tp3_grupo_g3.databinding.LayActivityMainBinding
@@ -35,5 +37,19 @@ class ActivityMain : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(bottomNavigation, navHostFragment.navController)
 
+        loadPreference()
     }
+
+    private fun loadPreference(){
+        val preference = PreferenceManager.getDefaultSharedPreferences(this)
+
+        if (preference.getBoolean(getString(R.string.modo_oscuro), false)) {
+
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
 }

@@ -7,7 +7,8 @@
 
     <SwitchPreference
         android:defaultValue="false"
-        android:key="switch_preference_1"
+        android:key="nigth_mode_preference"
         android:title="@string/modo_oscuro" />
+
 </PreferenceScreen>
 
