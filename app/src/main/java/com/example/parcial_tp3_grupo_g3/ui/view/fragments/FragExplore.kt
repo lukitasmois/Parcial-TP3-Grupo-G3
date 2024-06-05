@@ -7,18 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.adapters.OfferAdapterHome
-import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapterHome
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragExploreBinding
-import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
+import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.ExploreViewModel
-import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -78,7 +77,35 @@ class FragExplore : Fragment() {
             }
         }
 
+        viewModel.item.observe(viewLifecycleOwner) { trip ->
+            trip?.let {
+                updateSaveButtonIcon(it)
+            }
+        }
+
+        binding.layExploreInclude.homeCardOfferTripButtonSave.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                val trip = viewModel.item.value
+                if (trip != null) {
+                    viewModel.saveTrip(trip)
+                    // Espera a que la operación se complete y actualiza el estado del icono
+                    val isSaved = trip.isSaved
+                    binding.layExploreInclude.homeCardOfferTripButtonSave.setImageResource(
+                        if (isSaved) R.drawable.ic_clock else R.drawable.ic_heart_false
+                    )
+                }
+            }
+
+        }
+
 
         return binding.root
     }
+
+    private fun updateSaveButtonIcon(trip: Trip) {
+        binding.layExploreInclude.homeCardOfferTripButtonSave.setImageResource(
+            if (trip.isSaved) R.drawable.ic_heart_true else R.drawable.ic_heart_false
+        )
+    }
+
 }

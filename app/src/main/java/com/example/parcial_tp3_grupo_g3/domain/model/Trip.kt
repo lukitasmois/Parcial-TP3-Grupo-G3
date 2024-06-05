@@ -12,7 +12,7 @@ data class Trip(
     val departureToken: String,
     val type: String,
     val image : String,
-    val isSaved: Boolean = false,
+    var isSaved: Boolean = false,
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.createTypedArrayList(Flight.CREATOR)!!,

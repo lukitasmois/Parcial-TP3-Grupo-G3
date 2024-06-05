@@ -1,6 +1,7 @@
 package com.example.parcial_tp3_grupo_g3.holders
 
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -24,4 +25,6 @@ class TripHolderHome(v : View): RecyclerView.ViewHolder(v) {
         val Itemimage : ImageView = view.findViewById((R.id.item_trip_home_image))
         Glide.with(view.context).load(image).centerInside().into(Itemimage)
     }
+
+    fun saveTrip() = view.findViewById<ImageButton>(R.id.home_card_offerTrip_button_save)
 }

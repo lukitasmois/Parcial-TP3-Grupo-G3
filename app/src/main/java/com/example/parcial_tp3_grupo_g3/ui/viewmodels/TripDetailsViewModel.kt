@@ -18,7 +18,7 @@ class TripDetailsViewModel @Inject constructor(
 
     ) : ViewModel(), ItemClickListener {
 
-    override fun saveTrip(trip: Trip) {
+    override  fun saveTrip(trip: Trip) {
         viewModelScope.launch {
             getTripsUseCase.saveTrip(trip)
         }

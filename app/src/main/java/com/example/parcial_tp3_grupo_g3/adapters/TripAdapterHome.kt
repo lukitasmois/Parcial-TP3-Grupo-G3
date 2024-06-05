@@ -29,8 +29,6 @@ class TripAdapterHome(
 
     }
 
-
-
     override fun getItemCount() = tripList.size
 
 

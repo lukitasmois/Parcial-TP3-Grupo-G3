@@ -123,5 +123,15 @@ class GetTripsUseCase @Inject constructor(
         }
 
     }
+
+    suspend fun getItemRandom(): Trip {
+        val tripWeekID = "-1374620035_1789351831"
+        val trip = tripDao.getTripById(tripWeekID)
+        val flights = repository.getFlightsForTrip(tripWeekID)
+        val allAirports = repository.getAllAirports()
+
+
+        return trip.toDomainModel(flights, allAirports)
+    }
 }
 
