@@ -52,4 +52,9 @@
             android:id="@+id/action_fragTripDetails_to_fragSearchResults"
             app:destination="@id/fragSearchResults" />
     </fragment>
+    <fragment
+        android:id="@+id/fragSettings"
+        android:name="com.example.parcial_tp3_grupo_g3.ui.view.fragments.FragSettings"
+        android:label="lay_frag_settings"
+        tools:layout="@layout/lay_frag_settings" />
 </navigation>
