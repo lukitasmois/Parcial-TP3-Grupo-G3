@@ -98,28 +98,28 @@
             android:textSize="15sp"/>
 
         <TextView
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/photos"
-            android:gravity="start"
-            app:layout_constraintTop_toBottomOf="@id/summary"
             android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:text="@string/photos"
             android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/summary"
+            tools:layout_editor_absoluteX="30dp" />
 
-        <HorizontalScrollView
-            android:id="@+id/detailsPhotoScroll"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detailsPhotoRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/summary"
-            android:layout_marginTop="45dp">
-
-            <LinearLayout
-                android:id="@+id/detailsPhotoLinearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.153" />
 
         <Button
             android:id="@+id/button"
@@ -132,7 +132,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsPhotoScroll"
             app:layout_constraintWidth="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
