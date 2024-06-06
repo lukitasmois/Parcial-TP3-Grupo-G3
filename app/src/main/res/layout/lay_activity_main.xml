@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
-                    android:text="addw"
+                    android:text="Title"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
 
 
