@@ -65,17 +65,6 @@ class FragSearchResults : Fragment(), ItemClickListener {
         return binding.root
     }
 
-
-
-    override fun onStart() {
-        super.onStart()
-
-        binding.searchResultsGoBackButton.setOnClickListener()
-        {
-            findNavController().navigate(R.id.action_fragSearchResults_to_fragSearch)
-        }
-    }
-
     override fun saveTrip(trip: Trip) {
         view?.findNavController()?.navigate(FragSearchResultsDirections.actionFragSearchResultsToFragSearch())
     }
