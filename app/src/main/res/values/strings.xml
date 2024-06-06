@@ -30,5 +30,7 @@
     <string name="item_trip_airportid">ID</string>
     <string name="text_title_offer">aca va el texto del titulo</string>
     <string name="text_special_offer">SPECIAL OFFER!</string>
+    <string name="profile_text">Profile</string>
+    <string name="settings_text">Settings</string>
     <string name="modo_oscuro">Modo Oscuro</string>
 </resources>

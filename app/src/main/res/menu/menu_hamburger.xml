@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/fragSettings"
-        android:title="settings" />
+        android:icon="@drawable/settings"
+        android:title="@string/settings_text" />
     <item
         android:id="@+id/fragProfile"
-        android:title="profile" />
+        android:icon="@drawable/profile_bottom"
+        android:title="@string/profile_text" />
 </menu>
