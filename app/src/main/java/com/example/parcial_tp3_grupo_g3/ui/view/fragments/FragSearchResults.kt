@@ -57,12 +57,23 @@ class FragSearchResults : Fragment(), ItemClickListener {
         searchResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
             trip?.let {
                 findNavController().navigate(FragSearchResultsDirections.actionFragSearchResultsToFragTripDetails(trip))
-                // Reinicia el valor después de la navegación para evitar navegaciones repetidas
+                // Reinicia el valor después de la navegación
                 searchResultsViewModel.navigateToTripDetails.value = null
             }
         }
 
         return binding.root
+    }
+
+
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.searchResultsGoBackButton.setOnClickListener()
+        {
+            findNavController().navigate(R.id.action_fragSearchResults_to_fragSearch)
+        }
     }
 
     override fun saveTrip(trip: Trip) {

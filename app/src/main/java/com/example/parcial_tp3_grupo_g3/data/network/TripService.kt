@@ -10,6 +10,7 @@ class TripService @Inject constructor(
     private val service: TripApiClient) {
 
     suspend fun getTrips(): List<TripModel> {
+
         return withContext(Dispatchers.IO) {
             val response = try {
                 service.getTrips()
@@ -34,4 +35,5 @@ class TripService @Inject constructor(
             }
         }
     }
+
 }

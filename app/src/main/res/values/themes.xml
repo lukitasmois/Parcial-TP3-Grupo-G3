@@ -2,12 +2,19 @@
     <style name="Base.Theme.ParcialTP3GrupoG3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/light_primary</item>
+        <item name="colorPrimaryDark">@color/white</item>
     </style>
 
     <style name="Theme.ParcialTP3GrupoG3" parent="Base.Theme.ParcialTP3GrupoG3" />
 
     <style name="Button.Orange" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/orange</item>
+    </style>
+
+    <style name="CustomToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="backgroundColor">@color/white</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="subtitleTextColor">@android:color/white</item>
     </style>
 
 </resources>

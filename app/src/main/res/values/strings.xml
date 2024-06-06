@@ -33,4 +33,5 @@
     <string name="profile_text">Profile</string>
     <string name="settings_text">Settings</string>
     <string name="modo_oscuro">Modo Oscuro</string>
+    <string name="from_mayus">FROM</string>
 </resources>
