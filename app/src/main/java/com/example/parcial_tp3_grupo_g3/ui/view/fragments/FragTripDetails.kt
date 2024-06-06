@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parcial_tp3_grupo_g3.R
+import com.example.parcial_tp3_grupo_g3.adapters.TripDetailsImageAdapter
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragTripDetailsBinding
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.TripDetailsViewModel
@@ -62,10 +64,30 @@ class FragTripDetails : Fragment() {
             binding.location.text = arrivalAirport
             binding.country.text = it.flights.firstOrNull()?.arrival_airport?.name
             binding.locationAmount.text = "$${it.price}"
+
+            setupRecyclerView()
         } ?: run {
             binding.location.text = "Trip details not available"
             binding.locationAmount.text = "N/A"
             binding.country.text = "N/A"
+        }
+    }
+
+    private fun setupRecyclerView() {
+        val imageUrls = List(5) { index -> setImage(index) }
+        val adapter = TripDetailsImageAdapter(imageUrls)
+        binding.detailsPhotoRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.detailsPhotoRecyclerView.adapter = adapter
+    }
+
+    private fun setImage(randomNumber: Int): String {
+        return when (randomNumber) {
+            0 -> "https://i.imgur.com/xxVatVq.jpeg"
+            1 -> "https://i.imgur.com/XmmidzY.jpeg"
+            2 -> "https://i.imgur.com/fZIT91e.jpeg"
+            3 -> "https://i.imgur.com/aVc64h0.jpeg"
+            4 -> "https://i.imgur.com/NI9D9rX.jpeg"
+            else -> "https://i.imgur.com/hSr2Cdq.jpeg"
         }
     }
 
