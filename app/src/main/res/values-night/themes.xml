@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ParcialTP3GrupoG3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/light_primary</item>
+        <item name="colorSecondary">@color/light_primary</item>
+        <item name="android:windowBackground">#191919</item>
         
     </style>
 </resources>

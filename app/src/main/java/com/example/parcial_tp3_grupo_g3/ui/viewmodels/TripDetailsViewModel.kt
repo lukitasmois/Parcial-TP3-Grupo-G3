@@ -1,6 +1,8 @@
 package com.example.parcial_tp3_grupo_g3.ui.viewmodels
 
 
+import android.util.Log
+import android.widget.ImageButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +25,7 @@ class TripDetailsViewModel @Inject constructor(
     private val _tripDetails = MutableLiveData<Trip?>()
     val tripDetails: LiveData<Trip?> get() = _tripDetails
 
+
     fun setTripDetails(trip: Trip) {
         _tripDetails.value = trip
     }
@@ -30,6 +33,8 @@ class TripDetailsViewModel @Inject constructor(
     override fun saveTrip(trip: Trip) {
         viewModelScope.launch {
             getTripsUseCase.saveTrip(trip)
+            trip.isSaved = !trip.isSaved
+            _tripDetails.postValue(trip)
         }
     }
 

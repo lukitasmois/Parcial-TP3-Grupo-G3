@@ -24,7 +24,6 @@ class FragProfile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         view1= inflater.inflate(R.layout.lay_frag_profile, container, false)
-        view1.setBackgroundColor(resources.getColor(R.color.background_color))
         cardSettings = view1.findViewById(R.id.lay_profile_settingbutton)
         buttonBack = view1.findViewById(R.id.frag_profile_backButton)
 

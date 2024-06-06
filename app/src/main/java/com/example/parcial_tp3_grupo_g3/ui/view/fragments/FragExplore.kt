@@ -1,6 +1,7 @@
 package com.example.parcial_tp3_grupo_g3.ui.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.parcial_tp3_grupo_g3.R
-import com.example.parcial_tp3_grupo_g3.utils.ToolBarUtils
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.internal.ToolbarUtils
 import com.example.parcial_tp3_grupo_g3.adapters.OfferAdapterHome
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapterHome
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragExploreBinding
@@ -45,7 +43,6 @@ class FragExplore : Fragment(), ItemClickListener {
         _binding = LayFragExploreBinding.inflate(inflater, container, false)
         tripAdapter = TripAdapterHome(mutableListOf(), this)
         offerAdapter = OfferAdapterHome(mutableListOf())
-        binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
         viewModel.onCreate()
 
         binding.tripsRec.apply {
@@ -93,11 +90,6 @@ class FragExplore : Fragment(), ItemClickListener {
                 val trip = viewModel.item.value
                 if (trip != null) {
                     viewModel.saveTrip(trip)
-                    // Espera a que la operación se complete y actualiza el estado del icono
-                    val isSaved = trip.isSaved
-                    binding.layExploreInclude.homeCardOfferTripButtonSave.setImageResource(
-                        if (isSaved) R.drawable.ic_clock else R.drawable.ic_heart_false
-                    )
                 }
             }
 

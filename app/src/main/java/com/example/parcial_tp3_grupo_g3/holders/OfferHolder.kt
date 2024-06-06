@@ -1,4 +1,4 @@
-package com.example.parcial_tp3_grupo_g3.ui.view.holders
+package com.example.parcial_tp3_grupo_g3.holders
 
 import android.graphics.drawable.Drawable
 import android.view.View

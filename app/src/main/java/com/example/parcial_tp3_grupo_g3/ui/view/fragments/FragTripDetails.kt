@@ -1,20 +1,26 @@
 package com.example.parcial_tp3_grupo_g3.ui.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.adapters.TripDetailsImageAdapter
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragTripDetailsBinding
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
+import com.example.parcial_tp3_grupo_g3.ui.viewmodels.ExploreViewModel
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.TripDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -23,6 +29,7 @@ class FragTripDetails : Fragment() {
     private val binding get() = _binding!!
     private var trip : Trip? = null
     private lateinit var root : View
+    private val viewModel : TripDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +44,12 @@ class FragTripDetails : Fragment() {
         val tripDetailsViewModel = ViewModelProvider(this).get(TripDetailsViewModel::class.java)
         _binding = LayFragTripDetailsBinding.inflate(inflater, container, false)
         root = binding.root
-        binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
 
         arguments?.let {
             val tripArg = FragTripDetailsArgs.fromBundle(it).trip
             trip = tripArg
             tripDetailsViewModel.setTripDetails(tripArg)
+            updateSaveButtonIcon(trip!!)
         }
 
         _binding!!.button.setOnClickListener {
@@ -52,10 +59,28 @@ class FragTripDetails : Fragment() {
         tripDetailsViewModel.tripDetails.observe(viewLifecycleOwner, Observer { trip ->
             this.trip = trip
             bindTripDetails(trip)
+            trip?.let {
+                updateSaveButtonIcon(it)
+            }
         })
+
+        binding.detailsSaveButton.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.saveTrip(trip!!)
+            }
+        }
+
 
         return root
     }
+
+    private fun updateSaveButtonIcon(trip: Trip) {
+        binding.detailsSaveButton.setImageResource(
+            if (trip.isSaved) R.drawable.ic_save_details_true else R.drawable.ic_save_details_false
+        )
+
+    }
+
 
     private fun bindTripDetails(trip: Trip?)
     {

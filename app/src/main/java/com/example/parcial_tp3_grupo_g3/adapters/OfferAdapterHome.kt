@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial_tp3_grupo_g3.R
-import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.holders.OfferHolderHome
-import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
-import com.example.parcial_tp3_grupo_g3.ui.view.holders.OfferHolder
+import com.example.parcial_tp3_grupo_g3.domain.model.Offer
 
 class OfferAdapterHome(
     var offerList: MutableList<Offer>

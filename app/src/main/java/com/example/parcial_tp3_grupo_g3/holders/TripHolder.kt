@@ -51,13 +51,23 @@ class TripHolder(v : View): RecyclerView.ViewHolder(v){
     }
 
     fun setAirportName(airportName: String?){
+        val wordsToRemove = setOf("Intercontinental", "International", "Airport")
+        val nameFormat = airportName
+            ?.split(" ")
+            ?.filter { it !in wordsToRemove }
+            ?.joinToString(" ")
         val itemAirportName = view.findViewById<TextView>(R.id.item_trip_txt_nameAirport)
-        itemAirportName.text = airportName
+        itemAirportName.text = nameFormat
     }
 
     fun setAirportName2(airportName: String?){
+        val wordsToRemove = setOf("Intercontinental", "International", "Airport")
+        val nameFormat = airportName
+            ?.split(" ")
+            ?.filter { it !in wordsToRemove }
+            ?.joinToString(" ")
         val itemAirportName = view.findViewById<TextView>(R.id.item_trip_txt_nameAirport2)
-        itemAirportName.text = airportName
+        itemAirportName.text = nameFormat
     }
 
     fun setClass(classType: String?){

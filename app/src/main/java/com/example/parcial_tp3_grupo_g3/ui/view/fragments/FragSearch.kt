@@ -38,7 +38,6 @@ class FragSearch : Fragment() {
             view?.findNavController()?.navigate(FragSearchDirections.actionFragSearchToFragSearchResults())
         }
 
-        root.setBackgroundColor(resources.getColor(R.color.background_color))
 
         return root
     }

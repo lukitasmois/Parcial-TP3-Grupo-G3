@@ -127,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/item_trip_name_airline"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/material_dynamic_neutral70"
                         app:layout_constraintBottom_toTopOf="@+id/guideline10"
                         app:layout_constraintStart_toEndOf="@+id/item_trip_airlineLogo"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -139,7 +139,7 @@
                         android:fontFamily="@font/inter"
                         android:paddingRight="10dp"
                         android:text="@string/item_trip_hour_minutes"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/material_dynamic_neutral70"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/guideline10"
                         app:layout_constraintEnd_toEndOf="parent"

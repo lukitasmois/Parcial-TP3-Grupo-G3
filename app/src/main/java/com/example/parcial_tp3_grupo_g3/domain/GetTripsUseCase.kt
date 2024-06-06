@@ -98,7 +98,6 @@ class GetTripsUseCase @Inject constructor(
 
     private fun generateTripID(departureToken: String, type: String): String {
         val id = departureToken.hashCode().toString() + "_" + type.hashCode().toString()
-        Log.e("GetTripsUseCase", "generando id de viaje: $id")
         return id
 
     }

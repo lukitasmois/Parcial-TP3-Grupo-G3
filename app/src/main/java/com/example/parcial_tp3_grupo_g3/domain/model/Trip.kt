@@ -21,7 +21,8 @@ data class Trip(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readString().toString()
+        parcel.readString().toString(),
+        parcel.readByte() != 0.toByte()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -31,6 +32,7 @@ data class Trip(
         parcel.writeString(tripID)
         parcel.writeString(departureToken)
         parcel.writeString(image)
+        parcel.writeByte(if (isSaved) 1 else 0)
     }
 
     override fun describeContents(): Int {

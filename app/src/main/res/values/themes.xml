@@ -3,6 +3,7 @@
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/light_primary</item>
         <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowBackground">@color/gray</item>
     </style>
 
     <style name="Theme.ParcialTP3GrupoG3" parent="Base.Theme.ParcialTP3GrupoG3" />
@@ -20,5 +21,6 @@
     <style name="Theme.App.SplashScreen" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorAccent">@color/black</item>
     </style>
+
 
 </resources>

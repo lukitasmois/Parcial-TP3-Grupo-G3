@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial_tp3_grupo_g3.R
-import com.example.parcial_tp3_grupo_g3.ui.view.adapters.OfferAdapter
-import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
+import com.example.parcial_tp3_grupo_g3.adapters.OfferAdapter
+import com.example.parcial_tp3_grupo_g3.domain.model.Offer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
@@ -34,7 +34,6 @@ class FragOffers : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewOffer = inflater.inflate(R.layout.lay_frag_offers, container, false)
-        viewOffer.setBackgroundColor(resources.getColor(R.color.background_color))
         offerRecycler = viewOffer.findViewById(R.id.offerRecyclerView)
         return viewOffer
     }

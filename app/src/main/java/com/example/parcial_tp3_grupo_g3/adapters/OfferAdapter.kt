@@ -1,12 +1,11 @@
-package com.example.parcial_tp3_grupo_g3.ui.view.adapters
+package com.example.parcial_tp3_grupo_g3.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial_tp3_grupo_g3.R
-import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
-import com.example.parcial_tp3_grupo_g3.ui.view.holders.OfferHolder
+import com.example.parcial_tp3_grupo_g3.domain.model.Offer
+import com.example.parcial_tp3_grupo_g3.holders.OfferHolder
 
 class OfferAdapter(val offers: MutableList<Offer>?) : RecyclerView.Adapter<OfferHolder>() {
 

@@ -1,7 +1,6 @@
 package com.example.parcial_tp3_grupo_g3.ui.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,14 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.parcial_tp3_grupo_g3.domain.GetTripsUseCase
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
-import com.example.parcial_tp3_grupo_g3.ui.view.entities.Offer
+import com.example.parcial_tp3_grupo_g3.domain.model.Offer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import retrofit2.http.GET
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 class ExploreViewModel @Inject constructor(

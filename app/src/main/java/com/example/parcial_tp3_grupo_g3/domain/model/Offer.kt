@@ -1,4 +1,4 @@
-package com.example.parcial_tp3_grupo_g3.ui.view.entities
+package com.example.parcial_tp3_grupo_g3.domain.model
 
 import kotlinx.serialization.Serializable
 

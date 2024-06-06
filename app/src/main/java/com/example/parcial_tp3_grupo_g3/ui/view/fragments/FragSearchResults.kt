@@ -37,7 +37,6 @@ class FragSearchResults : Fragment(), ItemClickListener {
     ): View? {
         _binding = LayFragSearchResultsBinding.inflate(inflater, container, false)
         tripAdapter = TripAdapter(mutableListOf(), searchResultsViewModel)
-        binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
         searchResultsViewModel.onCreate()
 
         binding.recyclerView.apply {
