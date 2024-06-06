@@ -226,7 +226,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/frag_profile_backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

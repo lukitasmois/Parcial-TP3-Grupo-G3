@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_fragProfile_to_fragSettings3"
             app:destination="@id/fragSettings" />
+        <action
+            android:id="@+id/action_fragProfile_to_fragExplore"
+            app:destination="@id/fragExplore" />
     </fragment>
     <fragment
         android:id="@+id/fragSearchResults"
