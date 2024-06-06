@@ -52,7 +52,7 @@ class FragTripDetails : Fragment() {
 
         binding.detailsGoBackButton.setOnClickListener()
         {
-            findNavController().navigate(R.id.action_fragTripDetails_to_fragSearchResults)
+            findNavController().navigate(FragTripDetailsDirections.actionFragTripDetailsToFragSearchResults())
         }
     }
 }

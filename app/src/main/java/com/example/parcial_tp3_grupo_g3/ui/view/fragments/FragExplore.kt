@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.parcial_tp3_grupo_g3.R
+import com.example.parcial_tp3_grupo_g3.utils.ToolBarUtils
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.internal.ToolbarUtils
 
 
 class FragExplore : Fragment() {
@@ -22,6 +25,8 @@ class FragExplore : Fragment() {
         // Inflate the layout for this fragment
         view1= inflater.inflate(R.layout.lay_frag_explore, container, false)
         view1.setBackgroundColor(resources.getColor(R.color.background_color))
+
         return view1
     }
+
 }
