@@ -8,11 +8,13 @@ import com.example.parcial_tp3_grupo_g3.R
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.holders.TripHolder
 import com.example.parcial_tp3_grupo_g3.holders.TripHolderHome
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 import kotlin.random.Random
 
 
 class TripAdapterHome(
     var tripList : MutableList<Trip>,
+    val itemClick: ItemClickListener
 
 ) : RecyclerView.Adapter<TripHolderHome>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripHolderHome {
@@ -26,7 +28,10 @@ class TripAdapterHome(
         //en realidad deberia ir para mostrar el destino que corresponda: trip.flights[trip.flights.size-1].arrival_airport.name
         holder.setTripDestinationName(trip.flights[0].departure_airport.name)
         holder.setTripDestinationImage(trip.image)
-
+        holder.setTripClass(trip.price.toString())
+        holder.navigateToTripDetails().setOnClickListener {
+            itemClick.navigateToTripDetails(trip)
+        }
     }
 
     override fun getItemCount() = tripList.size
@@ -36,6 +41,5 @@ class TripAdapterHome(
         tripList = newList.toMutableList()
         notifyDataSetChanged()
     }
-
 
 }

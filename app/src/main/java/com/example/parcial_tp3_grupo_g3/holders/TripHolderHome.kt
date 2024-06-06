@@ -4,9 +4,12 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.parcial_tp3_grupo_g3.R
+import com.example.parcial_tp3_grupo_g3.domain.model.Trip
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 
 class TripHolderHome(v : View): RecyclerView.ViewHolder(v) {
     private var view : View
@@ -26,5 +29,10 @@ class TripHolderHome(v : View): RecyclerView.ViewHolder(v) {
         Glide.with(view.context).load(image).centerInside().into(Itemimage)
     }
 
-    fun saveTrip() = view.findViewById<ImageButton>(R.id.home_card_offerTrip_button_save)
+    fun setTripClass(tripClass: String){
+        val itemClass = view.findViewById<TextView>(R.id.item_trip_home_class)
+        itemClass.text = "$ $tripClass"
+    }
+
+     fun navigateToTripDetails() = view.findViewById<CardView>(R.id.item_trip_home_card)
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.parcial_tp3_grupo_g3.R
@@ -15,13 +16,14 @@ import com.example.parcial_tp3_grupo_g3.adapters.OfferAdapterHome
 import com.example.parcial_tp3_grupo_g3.adapters.TripAdapterHome
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragExploreBinding
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
+import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.ExploreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class FragExplore : Fragment() {
+class FragExplore : Fragment(), ItemClickListener {
     private var _binding: LayFragExploreBinding? = null
     private val binding get() = _binding!!
     private val viewModel : ExploreViewModel by viewModels()
@@ -38,7 +40,7 @@ class FragExplore : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = LayFragExploreBinding.inflate(inflater, container, false)
-        tripAdapter = TripAdapterHome(mutableListOf())
+        tripAdapter = TripAdapterHome(mutableListOf(), this)
         offerAdapter = OfferAdapterHome(mutableListOf())
         binding.root.setBackgroundColor(resources.getColor(R.color.background_color))
         viewModel.onCreate()
@@ -98,6 +100,10 @@ class FragExplore : Fragment() {
 
         }
 
+        binding.layExploreButtonTrips.setOnClickListener {
+            findNavController().navigate(FragExploreDirections.actionFragExploreToFragSearchResults())
+        }
+
 
         return binding.root
     }
@@ -106,6 +112,14 @@ class FragExplore : Fragment() {
         binding.layExploreInclude.homeCardOfferTripButtonSave.setImageResource(
             if (trip.isSaved) R.drawable.ic_heart_true else R.drawable.ic_heart_false
         )
+    }
+
+    override fun saveTrip(trip: Trip) {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigateToTripDetails(trip: Trip) {
+        findNavController().navigate(FragExploreDirections.actionFragExploreToFragTripDetails(trip))
     }
 
 }
