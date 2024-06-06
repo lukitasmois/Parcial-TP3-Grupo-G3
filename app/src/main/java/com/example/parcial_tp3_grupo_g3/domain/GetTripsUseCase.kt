@@ -11,7 +11,6 @@ import com.example.parcial_tp3_grupo_g3.data.database.entities.TripEntity
 import com.example.parcial_tp3_grupo_g3.data.database.entities.toDomainModel
 import com.example.parcial_tp3_grupo_g3.data.model.AirportModel
 import com.example.parcial_tp3_grupo_g3.data.model.TripModel
-import com.example.parcial_tp3_grupo_g3.domain.model.Airport
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 
 

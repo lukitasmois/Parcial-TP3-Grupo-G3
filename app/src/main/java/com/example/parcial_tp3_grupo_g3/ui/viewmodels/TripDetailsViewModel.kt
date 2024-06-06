@@ -1,6 +1,8 @@
 package com.example.parcial_tp3_grupo_g3.ui.viewmodels
 
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.parcial_tp3_grupo_g3.data.TripRepository
@@ -17,6 +19,13 @@ class TripDetailsViewModel @Inject constructor(
     private val getTripsUseCase : GetTripsUseCase,
 
     ) : ViewModel(), ItemClickListener {
+
+    private val _tripDetails = MutableLiveData<Trip?>()
+    val tripDetails: LiveData<Trip?> get() = _tripDetails
+
+    fun setTripDetails(trip: Trip) {
+        _tripDetails.value = trip
+    }
 
     override fun saveTrip(trip: Trip) {
         viewModelScope.launch {
