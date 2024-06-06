@@ -157,9 +157,10 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/Settings"
+                    android:id="@+id/lay_profile_settingbutton"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:clickable="true">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -225,11 +226,13 @@
     </com.google.android.material.card.MaterialCardView>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/frag_profile_backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/transparent"
+        android:backgroundTint="@color/orange"
         android:src="@drawable/arrow"
         app:layout_constraintStart_toStartOf="@+id/imageViewBackground"
         app:layout_constraintTop_toTopOf="@+id/imageViewBackground" />
@@ -238,7 +241,9 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="335dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/transparent"
         android:src="@drawable/pencil"
         app:layout_constraintStart_toStartOf="@+id/imageViewBackground"
         app:layout_constraintTop_toTopOf="parent" />

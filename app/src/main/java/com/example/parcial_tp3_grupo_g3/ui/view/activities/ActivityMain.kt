@@ -3,6 +3,7 @@ package com.example.parcial_tp3_grupo_g3.ui.view.activities
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -12,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.example.parcial_tp3_grupo_g3.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.parcial_tp3_grupo_g3.databinding.LayActivityMainBinding
@@ -62,6 +64,7 @@ class ActivityMain : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(bottomNavigation, navHostFragment.navController)
 
+        loadPreference()
         toolbar = findViewById(R.id.custom_toolbar)
         fragmentBehaviour()
     }
@@ -113,4 +116,17 @@ class ActivityMain : AppCompatActivity() {
             }
         }
     }
+
+    private fun loadPreference(){
+        val preference = PreferenceManager.getDefaultSharedPreferences(this)
+
+        if (preference.getBoolean(getString(R.string.modo_oscuro), false)) {
+
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
 }
