@@ -11,7 +11,6 @@ import com.example.parcial_tp3_grupo_g3.data.database.entities.TripEntity
 import com.example.parcial_tp3_grupo_g3.data.database.entities.toDomainModel
 import com.example.parcial_tp3_grupo_g3.data.model.AirportModel
 import com.example.parcial_tp3_grupo_g3.data.model.TripModel
-import com.example.parcial_tp3_grupo_g3.domain.model.Airport
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 
 
@@ -40,13 +39,6 @@ class GetTripsUseCase @Inject constructor(
         } else {
             repository.getAllTripsFromDatabase()
         }
-    }
-
-    suspend fun getTripById(tripId: String): Trip? {
-        val tripEntity = tripDao.getTripById(tripId) ?: return null
-        val flights = repository.getFlightsForTrip(tripEntity.tripID)
-        val allAirports = repository.getAllAirports()
-        return tripEntity.toDomainModel(flights, allAirports)
     }
 
     private suspend fun insertTrips(trips: List<TripModel>): List<TripEntity> {
