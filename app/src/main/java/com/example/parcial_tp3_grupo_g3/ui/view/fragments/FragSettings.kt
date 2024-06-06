@@ -12,9 +12,6 @@ import com.example.parcial_tp3_grupo_g3.R
 
 
 class FragSettings : PreferenceFragmentCompat() {
-    lateinit var view1: View
-
-
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferencescreen, rootKey)

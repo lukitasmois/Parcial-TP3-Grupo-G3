@@ -9,6 +9,7 @@ import com.example.parcial_tp3_grupo_g3.domain.GetTripsUseCase
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
 import com.example.parcial_tp3_grupo_g3.domain.model.Offer
+import com.example.parcial_tp3_grupo_g3.listeners.SaveClickListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class ExploreViewModel @Inject constructor(
     private val getTripsUseCase: GetTripsUseCase,
     private val context: Context
-) : ViewModel(), ItemClickListener {
+) : ViewModel(), SaveClickListener {
 
     val isLoading = MutableLiveData<Boolean>()
     val tripList = MutableLiveData<MutableList<Trip>>()
@@ -34,9 +35,7 @@ class ExploreViewModel @Inject constructor(
             val result = getTripsUseCase.invoke()
             val offers = getOffers()
 
-
             if(!result.isNullOrEmpty()){
-
                 tripList.postValue(result.toMutableList())
                 _item.postValue(getTripsUseCase.getItemRandom())
             }
@@ -61,14 +60,9 @@ class ExploreViewModel @Inject constructor(
     override fun saveTrip(trip: Trip) {
         viewModelScope.launch {
             getTripsUseCase.saveTrip(trip)
-            // Alterna el estado de isSaved en el objeto trip
             trip.isSaved = !trip.isSaved
             _item.postValue(trip)
         }
-    }
-
-    override fun navigateToTripDetails(trip: Trip) {
-        TODO("Not yet implemented")
     }
 
 }

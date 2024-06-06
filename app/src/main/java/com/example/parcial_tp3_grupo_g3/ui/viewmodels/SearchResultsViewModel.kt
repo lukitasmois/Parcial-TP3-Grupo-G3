@@ -40,8 +40,4 @@ class SearchResultsViewModel @Inject constructor(
             navigateToTripDetails.value = trip
         }
 
-    override  fun saveTrip(trip: Trip) {
-
-    }
-
 }

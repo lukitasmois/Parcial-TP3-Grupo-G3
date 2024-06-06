@@ -15,21 +15,18 @@ import com.example.parcial_tp3_grupo_g3.adapters.TripAdapter
 import com.example.parcial_tp3_grupo_g3.databinding.LayFragSearchResultsBinding
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
+import com.example.parcial_tp3_grupo_g3.listeners.SaveClickListener
 import com.example.parcial_tp3_grupo_g3.ui.viewmodels.SearchResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class FragSearchResults : Fragment(), ItemClickListener {
+class FragSearchResults : Fragment(), SaveClickListener {
     private var _binding:LayFragSearchResultsBinding? = null
     private val binding get() = _binding!!
     private val searchResultsViewModel : SearchResultsViewModel by viewModels()
     private lateinit var tripAdapter: TripAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +40,8 @@ class FragSearchResults : Fragment(), ItemClickListener {
             layoutManager = LinearLayoutManager(context)
             adapter = tripAdapter
         }
+
+        //Actualiza la RecyclerView con los datos de la búsqueda
         searchResultsViewModel.tripList.observe(viewLifecycleOwner) {
             it?.let {
                 tripAdapter.updateList(it)
@@ -56,7 +55,6 @@ class FragSearchResults : Fragment(), ItemClickListener {
         searchResultsViewModel.navigateToTripDetails.observe(viewLifecycleOwner) { trip ->
             trip?.let {
                 findNavController().navigate(FragSearchResultsDirections.actionFragSearchResultsToFragTripDetails(trip))
-                // Reinicia el valor después de la navegación
                 searchResultsViewModel.navigateToTripDetails.value = null
             }
         }
@@ -68,7 +66,4 @@ class FragSearchResults : Fragment(), ItemClickListener {
         view?.findNavController()?.navigate(FragSearchResultsDirections.actionFragSearchResultsToFragSearch())
     }
 
-    override fun navigateToTripDetails(trip: Trip) {
-        TODO("Not yet implemented")
-    }
 }

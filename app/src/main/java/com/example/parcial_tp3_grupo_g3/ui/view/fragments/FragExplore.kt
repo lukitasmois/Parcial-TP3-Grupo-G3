@@ -39,7 +39,6 @@ class FragExplore : Fragment(), ItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = LayFragExploreBinding.inflate(inflater, container, false)
         tripAdapter = TripAdapterHome(mutableListOf(), this)
         offerAdapter = OfferAdapterHome(mutableListOf())
@@ -55,20 +54,38 @@ class FragExplore : Fragment(), ItemClickListener {
             adapter = offerAdapter
         }
 
+        //Guardar o no el Trip de "destacado"
+        binding.layExploreInclude.homeCardOfferTripButtonSave.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                val trip = viewModel.item.value
+                if (trip != null) {
+                    viewModel.saveTrip(trip)
+                }
+            }
+        }
+
+        //Navegacion del boton "Flights"
+        binding.layExploreButtonTrips.setOnClickListener {
+            findNavController().navigate(FragExploreDirections.actionFragExploreToFragSearchResults())
+        }
+
+        //Actualizar el RecyclerView de Trips y Offers
         viewModel.tripList.observe(viewLifecycleOwner) {
             it?.let {
                 tripAdapter.updateList(it)
             }
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.loadingExplore.isVisible = it
-        }
-
         viewModel.offerList.observe(viewLifecycleOwner) { offers ->
             offerAdapter.updateList(offers)
         }
 
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            binding.loadingExplore.isVisible = it
+        }
+
+
+        //Carga la imagen del Trip "destacado"
         viewModel.item.observe(viewLifecycleOwner){ item ->
             item?.let {
                 binding.layExploreInclude.homeCardOfferTripPrice.text = item.price.toString()
@@ -79,26 +96,12 @@ class FragExplore : Fragment(), ItemClickListener {
             }
         }
 
+        //Actualiza el boton de "guardar" el Trip "destacado"
         viewModel.item.observe(viewLifecycleOwner) { trip ->
             trip?.let {
                 updateSaveButtonIcon(it)
             }
         }
-
-        binding.layExploreInclude.homeCardOfferTripButtonSave.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launch {
-                val trip = viewModel.item.value
-                if (trip != null) {
-                    viewModel.saveTrip(trip)
-                }
-            }
-
-        }
-
-        binding.layExploreButtonTrips.setOnClickListener {
-            findNavController().navigate(FragExploreDirections.actionFragExploreToFragSearchResults())
-        }
-
 
         return binding.root
     }
@@ -107,10 +110,6 @@ class FragExplore : Fragment(), ItemClickListener {
         binding.layExploreInclude.homeCardOfferTripButtonSave.setImageResource(
             if (trip.isSaved) R.drawable.ic_heart_true else R.drawable.ic_heart_false
         )
-    }
-
-    override fun saveTrip(trip: Trip) {
-        TODO("Not yet implemented")
     }
 
     override fun navigateToTripDetails(trip: Trip) {

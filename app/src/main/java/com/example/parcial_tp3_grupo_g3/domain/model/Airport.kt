@@ -36,10 +36,3 @@ data class Airport(
     }
 }
 
-fun Airport.toAirportEntity(): AirportEntity {
-    return AirportEntity(
-        id = this.id,
-        name = this.name,
-        time = this.time
-    )
-}

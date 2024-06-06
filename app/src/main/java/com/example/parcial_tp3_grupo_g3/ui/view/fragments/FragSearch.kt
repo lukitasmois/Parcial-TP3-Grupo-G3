@@ -18,11 +18,6 @@ class FragSearch : Fragment() {
     private var _binding: LayFragSearchBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,14 +25,9 @@ class FragSearch : Fragment() {
         _binding = LayFragSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val searchButton: Button = binding.layFragBttonSearch
-
-
-
-        searchButton.setOnClickListener() {
+        binding.layFragBttonSearch.setOnClickListener() {
             view?.findNavController()?.navigate(FragSearchDirections.actionFragSearchToFragSearchResults())
         }
-
 
         return root
     }

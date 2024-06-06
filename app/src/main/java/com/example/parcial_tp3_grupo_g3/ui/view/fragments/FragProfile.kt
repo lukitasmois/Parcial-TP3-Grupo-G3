@@ -15,9 +15,6 @@ class FragProfile : Fragment() {
     lateinit var view1: View
     lateinit var cardSettings: CardView
     lateinit var buttonBack : ImageButton
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -17,12 +17,6 @@ class FragPreference {
 
     class FragPreference : PreferenceFragmentCompat() {
 
-        companion object {
-            fun newInstance() = FragPreference()
-        }
-
-        //private val viewModel: PreferenceViewModel by viewModels()
-
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferencescreen, rootKey)
 

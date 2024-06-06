@@ -31,16 +31,10 @@ class FragTripDetails : Fragment() {
     private lateinit var root : View
     private val viewModel : TripDetailsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val tripDetailsViewModel = ViewModelProvider(this).get(TripDetailsViewModel::class.java)
         _binding = LayFragTripDetailsBinding.inflate(inflater, container, false)
         root = binding.root

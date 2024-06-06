@@ -17,7 +17,6 @@ class TripHolder(v : View): RecyclerView.ViewHolder(v){
     }
 
     fun setTripPrice(price: Double?){
-
         val itemPrice = view.findViewById<TextView>(R.id.item_trip_price)
         itemPrice.text = "$"+price.toString()
     }
@@ -33,8 +32,8 @@ class TripHolder(v : View): RecyclerView.ViewHolder(v){
     }
 
     fun setTime(time: Int?){
-        val hours = time?.div(60) // obtén las horas dividiendo por 60
-        val minutes = time?.rem(60) // obtén los minutos tomando el módulo de 60
+        val hours = time?.div(60)
+        val minutes = time?.rem(60)
         val time = String.format("%02dhr %02dmin", hours, minutes)
         val itemTime = view.findViewById<TextView>(R.id.item_trip_time)
         itemTime.text = time

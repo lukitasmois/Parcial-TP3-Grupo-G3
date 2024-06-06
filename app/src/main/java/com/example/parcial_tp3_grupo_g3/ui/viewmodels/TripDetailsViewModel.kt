@@ -12,6 +12,7 @@ import com.example.parcial_tp3_grupo_g3.data.database.dao.TripDao
 import com.example.parcial_tp3_grupo_g3.domain.GetTripsUseCase
 import com.example.parcial_tp3_grupo_g3.domain.model.Trip
 import com.example.parcial_tp3_grupo_g3.listeners.ItemClickListener
+import com.example.parcial_tp3_grupo_g3.listeners.SaveClickListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +21,7 @@ import javax.inject.Inject
 class TripDetailsViewModel @Inject constructor(
     private val getTripsUseCase : GetTripsUseCase,
 
-    ) : ViewModel(), ItemClickListener {
+    ) : ViewModel(), SaveClickListener {
 
     private val _tripDetails = MutableLiveData<Trip?>()
     val tripDetails: LiveData<Trip?> get() = _tripDetails
@@ -37,7 +38,4 @@ class TripDetailsViewModel @Inject constructor(
             _tripDetails.postValue(trip)
         }
     }
-
-    override fun navigateToTripDetails(trip: Trip) {
-        TODO("Not yet implemented")
-    }}
+}

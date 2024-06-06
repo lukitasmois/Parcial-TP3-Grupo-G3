@@ -26,7 +26,6 @@ class GetTripsUseCase @Inject constructor(
     suspend operator fun invoke(): List<Trip> {
         val trips = repository.getAllTripsFromApi()
         return if (trips.isNotEmpty()) {
-            //tripDao.deleteAllTrips()
 
             val insertedTrips = insertTrips(trips)
             // Obtener los vuelos y aeropuertos después de la inserción
@@ -42,6 +41,7 @@ class GetTripsUseCase @Inject constructor(
     }
 
 
+    //Inserta Los trips en la base de datos
     private suspend fun insertTrips(trips: List<TripModel>): List<TripEntity> {
         val insertedTripEntities = mutableListOf<TripEntity>()
         trips.forEach { trip ->
@@ -56,6 +56,7 @@ class GetTripsUseCase @Inject constructor(
                 image = setImage(Random.nextInt(0,4)),
                 isSaved = false
             )
+
             // Insertar el viaje y obtener su ID generado
             tripDao.insertTrip(tripEntity)
 
@@ -69,7 +70,7 @@ class GetTripsUseCase @Inject constructor(
                     airlineName = flight.airlineName,
                     airlineLogo = flight.airlineLogo,
                     travelClass = flight.travelClass,
-                    tripID = tripID.toString(), // Usar el ID del viaje generado
+                    tripID = tripID,
                     departure_airport_id = departureAirportId,
                     arrival_airport_id = arrivalAirportId,
                 )
@@ -79,12 +80,12 @@ class GetTripsUseCase @Inject constructor(
             // Insertar los vuelos
             flightDao.insertAllFlights(flightEntities)
 
-            // Agregar el viaje insertado a la lista de entidades de viaje insertadas
             insertedTripEntities.add(tripEntity)
         }
         return insertedTripEntities
     }
 
+    //Setea una imagen aleatoria para el Trip
     private fun setImage(randomNumber: Int): String {
         return when(randomNumber){
             0 -> "https://i.imgur.com/xxVatVq.jpeg"
@@ -96,12 +97,14 @@ class GetTripsUseCase @Inject constructor(
         }
     }
 
+    //Genera un ID unico para el Trip
     private fun generateTripID(departureToken: String, type: String): String {
         val id = departureToken.hashCode().toString() + "_" + type.hashCode().toString()
         return id
 
     }
 
+    //Inserta un aeropuerto en la base de datos
     private suspend fun insertAirport(airport: AirportModel): String {
         val airportEntity = AirportEntity(
             id = airport.id,
@@ -112,6 +115,7 @@ class GetTripsUseCase @Inject constructor(
         return airport.id
     }
 
+    //Cambia el estado de guardado de un Trip
     suspend fun saveTrip(trip: Trip) {
         val tripDB = tripDao.getTripById(trip.tripID)
         if (tripDB.isSaved) {
@@ -122,12 +126,12 @@ class GetTripsUseCase @Inject constructor(
 
     }
 
+    //Obtiene un Trip aleatorio
     suspend fun getItemRandom(): Trip {
         val tripWeekID = "-1374620035_1789351831"
         val trip = tripDao.getTripById(tripWeekID)
         val flights = repository.getFlightsForTrip(tripWeekID)
         val allAirports = repository.getAllAirports()
-
 
         return trip.toDomainModel(flights, allAirports)
     }

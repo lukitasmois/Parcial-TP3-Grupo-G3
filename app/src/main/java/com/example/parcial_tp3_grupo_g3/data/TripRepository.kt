@@ -17,6 +17,8 @@ class TripRepository @Inject constructor(
     private val flightDao: FlightDao,
     private val airportDao: AirportDao
 ) {
+
+    //Trae los Trips desde la API
     suspend fun getAllTripsFromApi(): List<TripModel> {
         return remote.getTrips()
     }
